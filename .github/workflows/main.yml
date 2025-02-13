@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
   # Specifies the latest Ubuntu runner for the job environment.
 
     steps:
