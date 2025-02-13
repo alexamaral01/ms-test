@@ -1,0 +1,9 @@
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY,
+    login VARCHAR(20) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+
+    CONSTRAINT UC_Login UNIQUE (login)
+);

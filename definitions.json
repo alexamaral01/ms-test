@@ -1,0 +1,71 @@
+{
+  "rabbit_version": "3.8.9",
+  "rabbitmq_version": "3.8.9",
+  "product_name": "RabbitMQ",
+  "product_version": "3.8.9",
+  "users": [
+    {
+      "name": "admin",
+      "password": "admin",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "policies": [
+    {
+      "vhost": "/",
+      "name": "ha",
+      "pattern": "",
+      "apply-to": "all",
+      "definition": {
+        "ha-mode": "all",
+        "ha-sync-batch-size": 256,
+        "ha-sync-mode": "automatic"
+      },
+      "priority": 0
+    }
+  ],
+  "permissions": [
+    {
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "queues": [
+    {
+      "name": "create_user.queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "lob-proj-dx",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "lob-proj-dx",
+      "vhost": "/",
+      "destination": "create_user.queue",
+      "destination_type": "queue",
+      "routing_key": "job-import.event.triggered",
+      "arguments": {}
+    }
+  ]
+}

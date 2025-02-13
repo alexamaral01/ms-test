@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: ms-test
+  datasource:
+    url: jdbc:h2:mem:demodb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc.lob.non_contextual_creation: true
+        dialect: org.hibernate.dialect.H2Dialect
+        ddl-auto: none
+        format_sql: true
+  flyway:
+    enabled: true
+  rabbitmq:
+    addresses: amqp://guest:guest@localhost
+
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
