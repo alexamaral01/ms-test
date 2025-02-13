@@ -22,7 +22,7 @@ public class CreateUserQueueListener {
             var user = createUserUserCase.createUser(createUserCommand);
             log.info("Usuário criado com sucesso -> id: {}", user.getId());
         } catch (DataIntegrityViolationException ex){
-            log.error("Erro ao criar Usuário", ex);
+            log.error("Erro ao criar Usuário ", ex);
         }
     }
 
